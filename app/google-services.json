@@ -1,27 +1,27 @@
 {
   "project_info": {
-    "project_number": "958354935671",
-    "firebase_url": "https://flatee-adca9.firebaseio.com",
-    "project_id": "flatee-adca9",
-    "storage_bucket": "flatee-adca9.appspot.com"
+    "project_number": "1070120783040",
+    "firebase_url": "https://flatmate-68f2a.firebaseio.com",
+    "project_id": "flatmate-68f2a",
+    "storage_bucket": "flatmate-68f2a.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:958354935671:android:fb43a5443f40901b",
+        "mobilesdk_app_id": "1:1070120783040:android:bfaf7c21ff536faf",
         "android_client_info": {
           "package_name": "com.example.pelpo.flatee"
         }
       },
       "oauth_client": [
         {
-          "client_id": "958354935671-7j03fuej6oijkesmvk61al99bfg7bao4.apps.googleusercontent.com",
+          "client_id": "1070120783040-l9goputpufqcv6uirh67ldlpogdtosl3.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBncgrHtVfqs3T-NSjOlsmZDTqvh00E6_A"
+          "current_key": "AIzaSyDMoopDN_9wMdbvF8eoeGfMSP32tIrSXS0"
         }
       ],
       "services": {
