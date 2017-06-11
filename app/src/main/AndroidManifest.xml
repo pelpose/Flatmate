@@ -22,6 +22,7 @@
         <activity android:name=".Dashboard" />
         <activity android:name=".CreateRoom" />
         <activity android:name=".ChatRoom" />
+        <activity android:name=".Calendar"></activity>
     </application>
 
 </manifest>

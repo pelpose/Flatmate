@@ -84,6 +84,10 @@ public class ChatRoom extends AppCompatActivity {
             return true;
         }
 
+        if (id == R.id.action_calendar) {
+            startActivity(new Intent(this,Calendar.class));
+        }
+
         if (id == R.id.action_logout){
             firebaseAuth.signOut();
             finish();
