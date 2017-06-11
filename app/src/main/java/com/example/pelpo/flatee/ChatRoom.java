@@ -85,7 +85,10 @@ public class ChatRoom extends AppCompatActivity {
         }
 
         if (id == R.id.action_calendar) {
-            startActivity(new Intent(this,Calendar.class));
+            Intent i = new Intent(getApplicationContext(), Calendar.class);
+
+            i.putExtra("key",roomNum);
+            startActivity(i);
         }
 
         if (id == R.id.action_logout){
