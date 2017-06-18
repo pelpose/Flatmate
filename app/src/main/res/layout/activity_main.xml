@@ -1,50 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.example.pelpo.flatee.MainActivity">
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="true">
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" android:background="#fff">
 
-    <LinearLayout
-        android:layout_centerHorizontal = "true"
-        android:layout_centerVertical="true"
-        android:orientation="vertical"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteY="0dp"
-        tools:layout_editor_absoluteX="8dp">
 
-        <EditText
-            android:layout_margin="15dp"
-            android:inputType="textEmailAddress"
-            android:hint="Enter your Email"
-            android:id ="@+id/editTextEmail"
+        <!-- Registration Form -->
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent"
+            android:padding="10dp">
 
-        <EditText
-            android:layout_margin="15dp"
-            android:inputType="textPassword"
-            android:hint="Enter your password"
-            android:id ="@+id/editPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            <!--  Email Label -->
+            <TextView android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#372c24"
+                android:text="@string/email"/>
+            <EditText android:id="@+id/editTextEmail"
+                android:hint="@string/EntEmail"
+                android:inputType="textEmailAddress"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="20dp"/>
+            <!-- Password Label -->
+            <TextView android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#372c24"
+                android:text="@string/Password"/>
+            <EditText android:id="@+id/editPassword"
+                android:hint="@string/EntPwd"
 
-        <Button
-            android:layout_margin="15dp"
-            android:id="@+id/btnRegi"
-            android:text="Register User"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"/>
+            <!-- Register Button -->
+            <Button android:id="@+id/btnRegi"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/RegUser"/>
+            <!-- Link to Login Screen -->
+            <TextView android:id="@+id/textViewSignIn"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="40dp"
+                android:text="@string/AlredayReg"
+                android:gravity="center"
+                android:textSize="20dp"
+                android:textColor="#025f7c"/>
 
-        <TextView
-            android:textAlignment="center"
-            android:text="Already Registered? sign in here"
-            android:id="@+id/textViewSignIn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-    </LinearLayout>
-
-</android.support.constraint.ConstraintLayout>
+        </LinearLayout>
+        <!-- Registration Form Ends -->
+    </RelativeLayout>
+</ScrollView>

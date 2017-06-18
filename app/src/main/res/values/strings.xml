@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Flatee</string>
+    <string name="email">Email</string>
+    <string name="EntEmail">Enter Your Email</string>
+    <string name="Password">Password</string>
+    <string name="EntPwd">Enter Password</string>
+    <string name="RegUser">Register User</string>
+    <string name="AlredayReg">Already Registered? Sign in here</string>
 </resources>
