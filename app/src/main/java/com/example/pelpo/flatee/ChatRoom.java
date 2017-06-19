@@ -114,7 +114,7 @@ public class ChatRoom extends AppCompatActivity {
 
                 messageText.setText(model.getMessageText());
                 messageTime.setText(DateFormat.format("dd-MM-yyyy (HH:mm:ss)",model.getMessageTime()));
-                messageUser.setText(model.getMeessageUser());
+                messageUser.setText(model.getMessageUser());
             }
         };
         listOfMessage.setAdapter(adapter);

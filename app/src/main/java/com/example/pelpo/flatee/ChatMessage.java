@@ -7,12 +7,12 @@ import java.util.Date;
  */
 
 public class ChatMessage {
-    private String meessageUser;
+    private String messageUser;
     private String messageText;
     private long messageTime;
 
-    public ChatMessage (String messageText, String meessageUser){
-        this.meessageUser =meessageUser;
+    public ChatMessage (String messageText, String messageUser){
+        this.messageUser =messageUser;
         this.messageText =messageText;
 
         messageTime = new Date().getTime();
@@ -22,12 +22,12 @@ public class ChatMessage {
 
     }
 
-    public String getMeessageUser() {
-        return meessageUser;
+    public String getMessageUser() {
+        return messageUser;
     }
 
-    public void setMeessageUser(String meessageUser) {
-        this.meessageUser = meessageUser;
+    public void setMessageUser(String messageUser) {
+        this.messageUser = messageUser;
     }
 
     public String getMessageText() {

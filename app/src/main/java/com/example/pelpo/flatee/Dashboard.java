@@ -57,6 +57,8 @@ public class Dashboard extends AppCompatActivity implements View.OnClickListener
         progressDialog.setMessage("Loading...");
         progressDialog.show();
 
+
+
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
 
             @Override

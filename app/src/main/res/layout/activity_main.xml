@@ -29,23 +29,71 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="20dp"/>
+
             <!-- Password Label -->
             <TextView android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:textColor="#372c24"
-                android:text="@string/Password"/>
+                android:text="Password"/>
             <EditText android:id="@+id/editPassword"
                 android:hint="@string/EntPwd"
-
+                android:inputType="textPassword"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"/>
+                android:layout_marginBottom="20dp"/>
+
+            <!-- First name Label -->
+            <TextView android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#372c24"
+                android:text="First name"/>
+            <EditText android:id="@+id/editFirstName"
+                android:hint="Enter First name"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"/>
+
+            <!-- Last name Label -->
+            <TextView android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#372c24"
+                android:text="Last name"/>
+            <EditText android:id="@+id/editLastName"
+                android:hint="Enter Last name"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"/>
+
+            <!-- Phone number Label -->
+            <TextView android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#372c24"
+                android:text="Phone number"/>
+            <EditText android:id="@+id/editPhone"
+                android:hint="Enter phone number"
+                android:inputType="phone"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"/>
+
+            <!-- Date of Birth Label -->
+            <TextView android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#372c24"
+                android:text="Date of Birth"/>
+            <EditText android:id="@+id/editDob"
+                android:hint="Enter Birthday"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"/>
+
             <!-- Register Button -->
             <Button android:id="@+id/btnRegi"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="@string/RegUser"/>
+
             <!-- Link to Login Screen -->
             <TextView android:id="@+id/textViewSignIn"
                 android:layout_width="fill_parent"

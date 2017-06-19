@@ -24,9 +24,14 @@ import com.google.firebase.database.FirebaseDatabase;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     private Button btnReg;
+    private TextView signIn;
     private EditText editEmail;
     private EditText editPass;
-    private TextView signIn;
+    private EditText editFirstName;
+    private EditText editLastName;
+    private EditText editPhone;
+    private EditText editDob;
+
 
     private ProgressDialog progressDialog;
 
@@ -38,20 +43,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        progressDialog = new ProgressDialog(this);
-
+        //Initializing Firebase Auth object
         firebaseAuth = FirebaseAuth.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference("User");
 
+        //Checking if the user exists
         if(firebaseAuth.getCurrentUser() != null) {
+            finish();
             startActivity(new Intent(getApplicationContext(), Dashboard.class));
         }
 
+
+        //initializing views
+        progressDialog = new ProgressDialog(this);
         btnReg = (Button) findViewById(R.id.btnRegi);
         editEmail=(EditText) findViewById(R.id.editTextEmail);
         editPass=(EditText)findViewById(R.id.editPassword);
         signIn=(TextView)findViewById(R.id.textViewSignIn);
+        editFirstName=(EditText)findViewById(R.id.editFirstName);
+        editLastName=(EditText)findViewById(R.id.editLastName);
+        editPhone=(EditText)findViewById(R.id.editPhone);
+        editDob=(EditText)findViewById(R.id.editDob);
 
+        //attaching listeners to buttons
         btnReg.setOnClickListener(this);
         signIn.setOnClickListener(this);
     }
@@ -99,11 +113,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     private void saveUserInformation() {
+        //Creating string for saving user information
+        String fname = editFirstName.getText().toString().trim();
+        String lname = editLastName.getText().toString().trim();
+        String phone = editPhone.getText().toString().trim();
+        String dob = editDob.getText().toString().trim();
         String roomNum = "12345";
+
+        //Creating required objects
         ChatNum chatNum = new ChatNum(roomNum);
+        UserInformation userInformation = new UserInformation(fname, lname, phone, dob, roomNum);
+
+        //Fetching current user's information
         FirebaseUser user = firebaseAuth.getCurrentUser();
 
-        databaseReference.child(user.getUid()).setValue(chatNum);
+        //Inserting user information to the Firebase database
+        //databaseReference.child(user.getUid()).setValue(chatNum);
+        databaseReference.child(user.getUid()).setValue(userInformation);
     }
 
     @Override
