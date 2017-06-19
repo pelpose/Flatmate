@@ -11,13 +11,15 @@ public class UserInformation {
     public String dob;
     public String phone;
     public String roomNum;
+    public String address;
 
-    public UserInformation(String fName, String lName, String dob, String phone, String roomNum) {
+    public UserInformation(String fName, String lName, String dob, String phone, String address, String roomNum) {
         this.fName = fName;
         this.lName = lName;
         this.dob = dob;
         this.phone = phone;
         this.roomNum = roomNum;
+        this.address = address;
     }
 
     public void setfName(String fName) {
@@ -58,5 +60,13 @@ public class UserInformation {
 
     public void setRoomNum(String roomNum) {
         this.roomNum = roomNum;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

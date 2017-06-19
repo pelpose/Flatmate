@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private EditText editPass;
     private EditText editFirstName;
     private EditText editLastName;
+    private EditText editAddress;
     private EditText editPhone;
     private EditText editDob;
 
@@ -62,6 +63,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         signIn=(TextView)findViewById(R.id.textViewSignIn);
         editFirstName=(EditText)findViewById(R.id.editFirstName);
         editLastName=(EditText)findViewById(R.id.editLastName);
+        editAddress=(EditText)findViewById(R.id.editAddress);
         editPhone=(EditText)findViewById(R.id.editPhone);
         editDob=(EditText)findViewById(R.id.editDob);
 
@@ -118,11 +120,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String lname = editLastName.getText().toString().trim();
         String phone = editPhone.getText().toString().trim();
         String dob = editDob.getText().toString().trim();
+        String address = editAddress.getText().toString().trim();
         String roomNum = "12345";
 
         //Creating required objects
         ChatNum chatNum = new ChatNum(roomNum);
-        UserInformation userInformation = new UserInformation(fname, lname, phone, dob, roomNum);
+        UserInformation userInformation = new UserInformation(fname, lname, phone, dob, address, roomNum);
 
         //Fetching current user's information
         FirebaseUser user = firebaseAuth.getCurrentUser();
