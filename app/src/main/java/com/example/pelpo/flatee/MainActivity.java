@@ -1,13 +1,16 @@
 package com.example.pelpo.flatee;
 
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -21,6 +24,9 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.SimpleDateFormat;
+import java.util.*;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     private Button btnReg;
@@ -33,6 +39,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private EditText editPhone;
     private EditText editDob;
 
+    private DatePickerDialog toDatePickerDialog;
+    private SimpleDateFormat dateFormatter;
 
     private ProgressDialog progressDialog;
 
@@ -48,12 +56,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         firebaseAuth = FirebaseAuth.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference("User");
 
+        //Initializing date format
+        dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
+
         //Checking if the user exists
         if(firebaseAuth.getCurrentUser() != null) {
             finish();
             startActivity(new Intent(getApplicationContext(), Dashboard.class));
         }
 
+        setDateTimeField();
 
         //initializing views
         progressDialog = new ProgressDialog(this);
@@ -66,10 +78,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         editAddress=(EditText)findViewById(R.id.editAddress);
         editPhone=(EditText)findViewById(R.id.editPhone);
         editDob=(EditText)findViewById(R.id.editDob);
+        editDob.setInputType(InputType.TYPE_NULL);
+        editDob.requestFocus();
 
         //attaching listeners to buttons
         btnReg.setOnClickListener(this);
         signIn.setOnClickListener(this);
+        editDob.setOnClickListener(this);
     }
 
     private void register() {
@@ -113,6 +128,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
     }
 
+    //Method for calendar for editDob
+    private void setDateTimeField(){
+        java.util.Calendar newCalendar = java.util.Calendar.getInstance();
+
+        toDatePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                java.util.Calendar newDate = java.util.Calendar.getInstance();
+                newDate.set(year, monthOfYear, dayOfMonth);
+                editDob.setText(dateFormatter.format(newDate.getTime()));
+            }
+        },newCalendar.get(java.util.Calendar.YEAR), newCalendar.get(java.util.Calendar.MONTH), newCalendar.get(java.util.Calendar.DAY_OF_MONTH));
+    }
 
     private void saveUserInformation() {
         //Creating string for saving user information
@@ -126,7 +154,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         //Creating required objects
         ChatNum chatNum = new ChatNum(roomNum);
-        UserInformation userInformation = new UserInformation(fname, lname, phone, dob, address, roomNum, admin);
+        UserInformation userInformation = new UserInformation(fname, lname, dob, phone, address, roomNum, admin);
 
         //Fetching current user's information
         FirebaseUser user = firebaseAuth.getCurrentUser();
@@ -143,6 +171,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         if(v == signIn){
             startActivity(new Intent(this, LogInActivity.class));
+        }
+        if(v == editDob) {
+            toDatePickerDialog.show();
         }
     }
 }
