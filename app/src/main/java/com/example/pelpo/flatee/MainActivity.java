@@ -90,6 +90,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void register() {
         String email= editEmail.getText().toString().trim();
         String password = editPass.getText().toString().trim();
+        String fname = editFirstName.getText().toString().trim();
+        String lname = editLastName.getText().toString().trim();
+        String phone = editPhone.getText().toString().trim();
+        String dob = editDob.getText().toString().trim();
+        String address = editAddress.getText().toString().trim();
 
             if(isValidEmail(email)==false){
                 //checking if the email field is in valid format
@@ -102,8 +107,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //stopping the function execution further
             return;
             }
-            if(isLegalPassword(password)==false){
+            if(isValidPassword(password)==false){
                 Toast.makeText(this, "Password must be at least 8 character long",Toast.LENGTH_SHORT).show();
+                return;
+            }
+            if(TextUtils.isEmpty(fname) || TextUtils.isEmpty(lname) || TextUtils.isEmpty(phone) || TextUtils.isEmpty(dob) || TextUtils.isEmpty(address)){
+                Toast.makeText(this, "All fields must be filled",Toast.LENGTH_SHORT).show();
                 return;
             }
 
@@ -176,15 +185,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    /*public boolean isValidPassword(String password){
-        if((password.length()<8) && (isUpper(password)==!true)) {
+    public boolean isValidPassword(String password){
+        if(password.length()<8) {
             return false;
         } else {
             return true;
         }
-    }*/
+    }
 
-    public boolean isLegalPassword(String pass) {
+    /*public boolean isLegalPassword(String pass) {
 
         if (!pass.matches(".*[A-Z].*")) return false;
 
@@ -197,7 +206,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (pass.length() < 8) return false;
 
         return true;
-    }
+    }*/
 
     @Override
     public void onClick(View v) {

@@ -9,7 +9,7 @@
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
-        android:title="Setting"
+        android:title="Change Profile"
         app:showAsAction="never" />
     <item
         android:id="@+id/action_invite"
