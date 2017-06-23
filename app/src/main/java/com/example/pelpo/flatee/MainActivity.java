@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private EditText editLastName;
     private EditText editAddress;
     private EditText editPhone;
-    private EditText editDob;
+    private TextView editDob;
 
     private DatePickerDialog toDatePickerDialog;
     private SimpleDateFormat dateFormatter;
@@ -77,8 +77,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         editLastName=(EditText)findViewById(R.id.editLastName);
         editAddress=(EditText)findViewById(R.id.editAddress);
         editPhone=(EditText)findViewById(R.id.editPhone);
-        editDob=(EditText)findViewById(R.id.editDob);
-        editDob.setInputType(InputType.TYPE_NULL);
+        editDob=(TextView)findViewById(R.id.editDob);
         editDob.requestFocus();
 
         //attaching listeners to buttons
@@ -107,10 +106,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //stopping the function execution further
             return;
             }
+            //validating password
             if(isValidPassword(password)==false){
                 Toast.makeText(this, "Password must be at least 8 character long",Toast.LENGTH_SHORT).show();
                 return;
             }
+            //All fields must be filled before user can register
             if(TextUtils.isEmpty(fname) || TextUtils.isEmpty(lname) || TextUtils.isEmpty(phone) || TextUtils.isEmpty(dob) || TextUtils.isEmpty(address)){
                 Toast.makeText(this, "All fields must be filled",Toast.LENGTH_SHORT).show();
                 return;
@@ -177,6 +178,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         databaseReference.child(user.getUid()).setValue(userInformation);
     }
 
+    //e-mail validation method
     public final static boolean isValidEmail(CharSequence target) {
         if (TextUtils.isEmpty(target)) {
             return false;
@@ -184,7 +186,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             return android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches();
         }
     }
-
+    //password validation method
     public boolean isValidPassword(String password){
         if(password.length()<8) {
             return false;

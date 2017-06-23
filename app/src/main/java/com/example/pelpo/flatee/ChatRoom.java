@@ -80,8 +80,8 @@ public class ChatRoom extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.action_changeProfile) {
+            startActivity(new Intent(this,Profile.class));
         }
 
         if (id == R.id.action_calendar) {

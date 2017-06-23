@@ -7,7 +7,7 @@
         android:title="Calendar"
         app:showAsAction="always" />
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/action_changeProfile"
         android:orderInCategory="100"
         android:title="Change Profile"
         app:showAsAction="never" />
