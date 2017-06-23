@@ -67,7 +67,7 @@ public class LogInActivity extends AppCompatActivity implements TextView.OnClick
             return;
         }
         //if validations are ok
-        progressDialog.setMessage("Registering...");
+        progressDialog.setMessage("Loging in...");
         progressDialog.show();
 
         firebaseAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {

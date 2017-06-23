@@ -89,20 +89,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void register() {
         String email= editEmail.getText().toString().trim();
-            String password = editPass.getText().toString().trim();
+        String password = editPass.getText().toString().trim();
 
-            if(TextUtils.isEmpty(email)){
-                //email is empty
-                Toast.makeText(this, "Please enter Email",Toast.LENGTH_SHORT).show();
-                //stopping the function execution further
+            if(isValidEmail(email)==false){
+                //checking if the email field is in valid format
+                Toast.makeText(this, "Email is in wrong format or empty",Toast.LENGTH_SHORT).show();
                 return;
             }
             if(TextUtils.isEmpty(password)){
             //password is empty
-            Toast.makeText(this, "Please enter Password",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Please enter Password",Toast.LENGTH_SHORT).show();
             //stopping the function execution further
             return;
-        }
+            }
+            if(isLegalPassword(password)==false){
+                Toast.makeText(this, "Password must be at least 8 character long",Toast.LENGTH_SHORT).show();
+                return;
+            }
+
         //if validations are ok
         progressDialog.setMessage("Registering...");
         progressDialog.show();
@@ -162,6 +166,37 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //Inserting user information to the Firebase database
         //databaseReference.child(user.getUid()).setValue(chatNum);
         databaseReference.child(user.getUid()).setValue(userInformation);
+    }
+
+    public final static boolean isValidEmail(CharSequence target) {
+        if (TextUtils.isEmpty(target)) {
+            return false;
+        } else {
+            return android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches();
+        }
+    }
+
+    /*public boolean isValidPassword(String password){
+        if((password.length()<8) && (isUpper(password)==!true)) {
+            return false;
+        } else {
+            return true;
+        }
+    }*/
+
+    public boolean isLegalPassword(String pass) {
+
+        if (!pass.matches(".*[A-Z].*")) return false;
+
+        if (!pass.matches(".*[a-z].*")) return false;
+
+        if (!pass.matches(".*\\d.*")) return false;
+
+        if (!pass.matches(".*[~!.......].*")) return false;
+
+        if (pass.length() < 8) return false;
+
+        return true;
     }
 
     @Override
