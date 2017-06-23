@@ -85,8 +85,8 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
 
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                UserInformation chatNum = dataSnapshot.getValue(UserInformation.class);
-                String result = chatNum.getRoomNum();
+                UserInformation chat = dataSnapshot.getValue(UserInformation.class);
+                String result = chat.getRoomNum();
                 if(result.equals("12345")){
                     editDob.setText(result);
                     progressDialog.dismiss();
