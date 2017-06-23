@@ -1,59 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:fillViewport="true"
     tools:context="com.example.pelpo.flatee.LogInActivity">
 
-    <LinearLayout
-        android:layout_centerHorizontal = "true"
-        android:layout_centerVertical="true"
-        android:orientation="vertical"
-        android:layout_width="0dp"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:layout_editor_absoluteY="84dp"
-        tools:layout_editor_absoluteX="44dp">
+        android:background="#ffffff">
 
-
-        <TextView
-            android:layout_margin="15dp"
-            android:id="@+id/textView"
+        <!-- Login Form -->
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="LogIn"/>
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            android:gravity="center"
+            >
 
-        <EditText
-            android:layout_margin="15dp"
-            android:inputType="textEmailAddress"
-            android:hint="Enter your Email"
-            android:id ="@+id/editTextEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <EditText
-            android:layout_margin="15dp"
-            android:inputType="textPassword"
-            android:hint="Enter your password"
-            android:id ="@+id/editPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <Button
-            android:layout_margin="15dp"
-            android:id="@+id/btnLogIn"
-            android:text="LogIn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:textAlignment="center"
-            android:text="Dont Have an account? SignUp here"
-            android:id="@+id/textViewSignUp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-    </LinearLayout>
+            <ImageView
+                android:id="@+id/imageViewLogo1"
+                android:layout_width="177dp"
+                android:layout_height="153dp"
+                android:layout_marginBottom="10dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/flatee"
+                android:contentDescription="@null"/>
 
 
-</android.support.constraint.ConstraintLayout>
+            <EditText
+                android:id="@+id/editTextEmail"
+                style="@style/editext_graybg"
+                android:layout_width="wrap_content"
+                android:layout_height="90dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress"
+                android:drawableStart="@drawable/ic_email"/>
+
+
+
+            <EditText
+                android:id="@+id/editPassword"
+                android:hint="@string/password_hint"
+                style="@style/editext_graybg"
+                android:inputType="textPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="90dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="20dp"
+                android:drawableStart="@drawable/ic_pwd"/>
+
+
+            <Button
+                android:id="@+id/btnLogIn"
+                style="@style/FirebaseUI.Button"
+                android:layout_width="fill_parent"
+                android:layout_height="61dp"
+                android:background="@drawable/green_btn"
+                android:text="@string/Login"
+                android:layout_margin="15dp"
+                />
+
+
+            <TextView android:id="@+id/textViewSignUp"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/NwRegi"
+                android:gravity="center"
+                android:textSize="18sp"
+                android:textColor="#025f7c"/>
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</ScrollView>

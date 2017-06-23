@@ -1,41 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.pelpo.flatee.Dashboard">
 
     <LinearLayout
-        android:layout_centerHorizontal = "true"
-        android:layout_centerVertical="true"
         android:orientation="vertical"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:layout_editor_absoluteY="84dp"
-        tools:layout_editor_absoluteX="44dp">
+        android:gravity="center_horizontal"
+        android:paddingBottom="20dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="20dp"
+        >
 
         <Button
-            android:layout_margin="15dp"
-            android:id="@+id/btnLogOut"
-            android:text="LogOut"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <Button
-            android:layout_margin="15dp"
             android:id="@+id/btnCreateRoom"
-            android:text="Create Room"
+            style="@style/FirebaseUI.Button"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-
-        <TextView
-            android:textAlignment="center"
-            android:id="@+id/name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-
+            android:layout_height="64dp"
+            android:layout_margin="15dp"
+            android:background="@drawable/green_btn"
+            android:text="@string/CrtRoom" />
     </LinearLayout>
-</android.support.constraint.ConstraintLayout>
+
+
+</ScrollView>

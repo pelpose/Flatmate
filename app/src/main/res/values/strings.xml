@@ -6,4 +6,9 @@
     <string name="EntPwd">Enter Password</string>
     <string name="RegUser">Register User</string>
     <string name="AlredayReg">Already Registered? Sign in here</string>
+    <string name="CrtRoom">Create Room</string>
+    <string name="Message">Message</string>
+    <string name="Login">Log in</string>
+    <string name="NwRegi">New to Flatee? Register here</string>
+    <string name="contentDescription">Flatee Logo</string>
 </resources>
