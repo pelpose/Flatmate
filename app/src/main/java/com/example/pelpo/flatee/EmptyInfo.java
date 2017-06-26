@@ -1,28 +1,19 @@
 package com.example.pelpo.flatee;
 
 /**
- * Created by Jin on 2017-06-19.
+ * Created by wlsgn on 2017-06-26.
  */
 
-public class UserInformation {
+public class EmptyInfo {
+    private String fName;
+    private String lName;
+    private String dob;
+    private String phone;
+    private String roomNum;
+    private String address;
+    private String admin;
 
-    public String fName;
-    public String lName;
-    public String dob;
-    public String phone;
-    public String roomNum;
-    public String address;
-    public String admin;
-
-    public UserInformation(String fName, String lName, String dob, String phone, String address, String roomNum, String admin) {
-        //
-        this.fName = fName;
-        this.lName = lName;
-        this.dob = dob;
-        this.phone = phone;
-        this.roomNum = roomNum;
-        this.address = address;
-        this.admin = admin;
+    public EmptyInfo() {
     }
 
     public void setfName(String fName) {

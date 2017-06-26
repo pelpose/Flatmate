@@ -164,7 +164,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String dob = editDob.getText().toString().trim();
         String address = editAddress.getText().toString().trim();
         String roomNum = "12345";
-        int admin = 0;
+        String admin = "0";
 
         //Creating required objects
         ChatNum chatNum = new ChatNum(roomNum);

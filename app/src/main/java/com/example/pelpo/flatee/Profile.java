@@ -8,10 +8,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,6 +35,14 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class Profile extends AppCompatActivity implements View.OnClickListener {
+
+    private FirebaseDatabase mFirebaseDatabase;
+    private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthlistener;
+    private DatabaseReference myRef;
+    private String userID;
+
+    private ListView mListView;
 
     private Button changeProfile;
     private Button changePassword;
@@ -54,11 +65,12 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        //Initializing Firebase Auth object
-        firebaseAuth = FirebaseAuth.getInstance();
-        FirebaseUser user = firebaseAuth.getCurrentUser();
-        //databaseReference = FirebaseDatabase.getInstance().getReference("User");
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("User").child(user.getUid().toString());
+        //firebase stuff
+        mAuth = FirebaseAuth.getInstance();
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
+        myRef = mFirebaseDatabase.getReference();
+        FirebaseUser user = mAuth.getCurrentUser();
+        userID = user.getUid();
 
         //Initializing date format
         dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
@@ -74,22 +86,26 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
         editAddress=(EditText)findViewById(R.id.editAddress);
         editPhone=(EditText)findViewById(R.id.editPhone);
         editDob=(TextView)findViewById(R.id.editDob);
-        editDob.requestFocus();
 
         //attaching listeners to buttons
         changeProfile.setOnClickListener(this);
         changePassword.setOnClickListener(this);
         editDob.setOnClickListener(this);
 
-        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
 
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                UserInformation chat = dataSnapshot.getValue(UserInformation.class);
-                String result = chat.getRoomNum();
-                if(result.equals("12345")){
-                    editDob.setText(result);
-                    progressDialog.dismiss();
+                for(DataSnapshot ds: dataSnapshot.getChildren()) {
+                    EmptyInfo info = dataSnapshot.getValue(EmptyInfo.class);
+                    info.setfName(ds.child(userID).getValue(EmptyInfo.class).getfName());
+                    info.setlName(ds.child(userID).getValue(EmptyInfo.class).getlName());
+                    info.setDob(ds.child(userID).getValue(EmptyInfo.class).getDob());
+                    info.setPhone(ds.child(userID).getValue(EmptyInfo.class).getPhone());
+                    info.setRoomNum(ds.child(userID).getValue(EmptyInfo.class).getRoomNum());
+                    info.setAddress(ds.child(userID).getValue(EmptyInfo.class).getAddress());
+                    info.setAdmin(ds.child(userID).getValue(EmptyInfo.class).getAdmin());
+                    //editDob.setText(result);
                 }
             }
 
@@ -98,8 +114,8 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
 
             }
         });
-
     }
+
 
     private void saveUserInformation(){
         String fname = editFirstName.getText().toString().trim();
@@ -107,8 +123,8 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
         String address = editAddress.getText().toString().trim();
         String phone = editPhone.getText().toString().trim();
         String dob = editDob.getText().toString().trim();
-        String roomNum="";
-        int admin=0;
+        String roomNum = "";
+        String admin= "";
 
         UserInformation userInformation = new UserInformation(fname, lname, dob, phone, address, roomNum, admin);
         FirebaseUser user = firebaseAuth.getCurrentUser();
@@ -146,3 +162,4 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
         }
     }
 }
+

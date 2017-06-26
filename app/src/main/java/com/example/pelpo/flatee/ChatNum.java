@@ -8,6 +8,7 @@ public class ChatNum {
     private String roomNum;
 
     public ChatNum() {}
+
     public ChatNum(String roomNum){
         this.roomNum =roomNum;
     }
