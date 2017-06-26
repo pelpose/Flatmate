@@ -106,6 +106,7 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
                     info.setAddress(ds.child(userID).getValue(EmptyInfo.class).getAddress());
                     info.setAdmin(ds.child(userID).getValue(EmptyInfo.class).getAdmin());
                     //editDob.setText(result);
+
                 }
             }
 
@@ -123,8 +124,8 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
         String address = editAddress.getText().toString().trim();
         String phone = editPhone.getText().toString().trim();
         String dob = editDob.getText().toString().trim();
-        String roomNum = "";
-        String admin= "";
+        String roomNum = (userID+"test");
+        String admin= "1";
 
         UserInformation userInformation = new UserInformation(fname, lname, dob, phone, address, roomNum, admin);
         FirebaseUser user = firebaseAuth.getCurrentUser();
