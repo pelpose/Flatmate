@@ -28,9 +28,9 @@ public class Dashboard extends AppCompatActivity implements View.OnClickListener
     private FirebaseAuth firebaseAuth;
     private DatabaseReference databaseReference;
 
-    private Button btnLogOut;
+    //private Button btnLogOut;
     private Button btnCreate;
-    private TextView displayName;
+   // private TextView displayName;
 
     private String roomNum;
 
@@ -47,12 +47,10 @@ public class Dashboard extends AppCompatActivity implements View.OnClickListener
         databaseReference = FirebaseDatabase.getInstance().getReference().child("User").child(user.getUid().toString());
 
         btnCreate = (Button) findViewById(R.id.btnCreateRoom);
-        //btnLogOut =(Button) findViewById(R.id.btnLogOut);
-        displayName =(TextView) findViewById(R.id.name);
+        //displayName =(TextView) findViewById(R.id.name);
 
         btnCreate.setOnClickListener(this);
-        btnLogOut.setOnClickListener(this);
-        displayName.setOnClickListener(this);
+        //displayName.setOnClickListener(this);
 
         progressDialog.setMessage("Loading...");
         progressDialog.show();
@@ -66,7 +64,7 @@ public class Dashboard extends AppCompatActivity implements View.OnClickListener
                 ChatNum chatNum = dataSnapshot.getValue(ChatNum.class);
                 String result = chatNum.getRoomNum();
                 if(result.equals("12345")){
-                    displayName.setText(result);
+                    //displayName.setText(result);
                     progressDialog.dismiss();
                 }else if (!result.equals("12345")) {
                     setRoomNum(result);
@@ -124,10 +122,10 @@ public class Dashboard extends AppCompatActivity implements View.OnClickListener
         if(v == btnCreate){
             startActivity(new Intent(this,CreateRoom.class));
         }
-        if(v == btnLogOut){
+       /* if(v == btnLogOut){
             firebaseAuth.signOut();
             finish();
             startActivity(new Intent(this,LogInActivity.class));
-        }
+        }*/
     }
 }
