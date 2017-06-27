@@ -1,7 +1,7 @@
 <resources>
 
 
-    <style name="AppTheme" parent="@android:style/Theme.Holo.Light">
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight.DarkActionBar">
         <item name="android:actionBarStyle">@style/CustomActionBar</item>
     </style>
 

@@ -73,18 +73,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         editEmail=(EditText) findViewById(R.id.editTextEmail);
         editPass=(EditText)findViewById(R.id.editPassword);
         signIn=(TextView)findViewById(R.id.textViewSignIn);
-        editFirstName=(EditText)findViewById(R.id.editFirstName);
-        editLastName=(EditText)findViewById(R.id.editLastName);
-        editAddress=(EditText)findViewById(R.id.editAddress);
-        editPhone=(EditText)findViewById(R.id.editPhone);
-        editDob=(EditText)findViewById(R.id.editDob);
-        editDob.setInputType(InputType.TYPE_NULL);
-        editDob.requestFocus();
+        //editFirstName=(EditText)findViewById(R.id.editFirstName);
+        //editLastName=(EditText)findViewById(R.id.editLastName);
+        //editAddress=(EditText)findViewById(R.id.editAddress);
+        //editPhone=(EditText)findViewById(R.id.editPhone);
+        //editDob=(EditText)findViewById(R.id.editDob);
+        //editDob.setInputType(InputType.TYPE_NULL);
+        //editDob.requestFocus();
 
         //attaching listeners to buttons
         btnReg.setOnClickListener(this);
         signIn.setOnClickListener(this);
-        editDob.setOnClickListener(this);
+        //editDob.setOnClickListener(this);
     }
 
     private void register() {
@@ -92,11 +92,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String password = editPass.getText().toString().trim();
         String fname = editFirstName.getText().toString().trim();
         String lname = editLastName.getText().toString().trim();
-        String phone = editPhone.getText().toString().trim();
-        String dob = editDob.getText().toString().trim();
-        String address = editAddress.getText().toString().trim();
+        //String phone = editPhone.getText().toString().trim();
+        //String dob = editDob.getText().toString().trim();
+        //String address = editAddress.getText().toString().trim();
 
-            if(isValidEmail(email)==false){
+            if(!isValidEmail(email)){
                 //checking if the email field is in valid format
                 Toast.makeText(this, "Email is in wrong format or empty",Toast.LENGTH_SHORT).show();
                 return;
@@ -107,11 +107,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //stopping the function execution further
             return;
             }
-            if(isValidPassword(password)==false){
+            if(!isValidPassword(password)){
                 Toast.makeText(this, "Password must be at least 8 character long",Toast.LENGTH_SHORT).show();
                 return;
             }
-            if(TextUtils.isEmpty(fname) || TextUtils.isEmpty(lname) || TextUtils.isEmpty(phone) || TextUtils.isEmpty(dob) || TextUtils.isEmpty(address)){
+            if(TextUtils.isEmpty(fname) || TextUtils.isEmpty(lname)){
                 Toast.makeText(this, "All fields must be filled",Toast.LENGTH_SHORT).show();
                 return;
             }
@@ -177,7 +177,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         databaseReference.child(user.getUid()).setValue(userInformation);
     }
 
-    public final static boolean isValidEmail(CharSequence target) {
+    public static boolean isValidEmail(CharSequence target) {
         if (TextUtils.isEmpty(target)) {
             return false;
         } else {

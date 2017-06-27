@@ -47,7 +47,7 @@ public class Dashboard extends AppCompatActivity implements View.OnClickListener
         databaseReference = FirebaseDatabase.getInstance().getReference().child("User").child(user.getUid().toString());
 
         btnCreate = (Button) findViewById(R.id.btnCreateRoom);
-        btnLogOut =(Button) findViewById(R.id.btnLogOut);
+        //btnLogOut =(Button) findViewById(R.id.btnLogOut);
         displayName =(TextView) findViewById(R.id.name);
 
         btnCreate.setOnClickListener(this);
