@@ -39,6 +39,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private FirebaseAuth firebaseAuth;
     private DatabaseReference databaseReference;
 
+    /**
+     * Brings user's information into firebase database
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,19 +76,97 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         signIn.setOnClickListener(this);
     }
 
+    /**
+     * Users can register by putting their email and password
+     */
     private void register() {
         String email= editEmail.getText().toString().trim();
-            String password = editPass.getText().toString().trim();
+        String emailFunction = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"; // email function in abcd@ format.
+        String password = editPass.getText().toString().trim();
+        String fName = editFirstName.getText().toString().trim();
+        String fNameFunction = "[a-zA-z]+";
+        String lName = editLastName.getText().toString().trim();
+        String lNameFunction = "[a-zA-z]+";
+        String address = editAddress.getText().toString().trim();
+        String phone = editPhone.getText().toString().trim();
+        String dob = editDob.getText().toString().trim();
+        String dobPattern = "^([0-9]{2})-([0-9]{2})-([0-9]{4})$";
 
-            if(TextUtils.isEmpty(email)){
-                //email is empty
-                Toast.makeText(this, "Please enter Email",Toast.LENGTH_SHORT).show();
-                //stopping the function execution further
-                return;
-            }
-            if(TextUtils.isEmpty(password)){
+        if(TextUtils.isEmpty(email)){
+            //email is empty
+            Toast.makeText(this, "Please enter your Email",Toast.LENGTH_SHORT).show();
+            //stopping the function execution further
+            return;
+        }
+        if(!email.matches(emailFunction)){
+            //Written in email format
+            Toast.makeText(this, "Type your email address correctly",Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(TextUtils.isEmpty(password)){
             //password is empty
-            Toast.makeText(this, "Please enter Password",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please enter your Password",Toast.LENGTH_SHORT).show();
+            //stopping the function execution further
+            return;
+        } else if(password.length() <6 ) {
+            //password length should be longer than 5
+            Toast.makeText(this, "Your password should be longer than 5",Toast.LENGTH_SHORT).show();
+            //stopping the function execution further
+            return;
+        }
+        if(TextUtils.isEmpty(fName)){
+            //first name is empty
+            Toast.makeText(this, "Please type your first name", Toast.LENGTH_SHORT).show();
+            //stopping the function execution further
+            return;
+        } else if(!fName.matches(fNameFunction)){
+            //Only alphabet letters are allowed
+            Toast.makeText(this, "Your first name should be alphabet letters", Toast.LENGTH_SHORT).show();
+            //stopping the function execution further
+            return;
+        }
+
+        if(TextUtils.isEmpty(lName)){
+            //last name is empty
+            Toast.makeText(this, "Please type your last name", Toast.LENGTH_SHORT).show();
+            //stopping the function execution further
+            return;
+        } else if(!lName.matches(lNameFunction)){
+            //Only alphabet letters are allowed
+            Toast.makeText(this, "Your last name should be alphabet letters", Toast.LENGTH_SHORT).show();
+            //stopping the function execution further
+            return;
+        }
+        if(TextUtils.isEmpty(address)){
+            //Address is empty
+            Toast.makeText(this, "Please type your address", Toast.LENGTH_SHORT).show();
+            //stopping the function execution further
+            return;
+        }
+        if(TextUtils.isEmpty(phone)){
+            //phone number is empty
+            Toast.makeText(this, "Please type your phone number", Toast.LENGTH_SHORT).show();
+            //stopping the function execution further
+            return;
+        } else if(phone.length() <4) {
+            // phone number length should be longer than 4
+            Toast.makeText(this, "Your phone number is too short", Toast.LENGTH_SHORT).show();
+            //stopping the function execution further
+            return;
+        } else if(phone.length() >12) {
+            //phone number length should be longer than 12
+            Toast.makeText(this, "Your phone number is too long", Toast.LENGTH_SHORT).show();
+            //stopping the function execution further
+            return;
+        }
+        if(TextUtils.isEmpty(dob)){
+            //Date of birth is empty
+            Toast.makeText(this, "Please type your Date of Birth", Toast.LENGTH_SHORT).show();
+            //stopping the function execution further
+            return;
+        } else if(!dob.matches(dobPattern)){
+            //Date of Birth should be in dd/mm/yyyy format
+            Toast.makeText(this, "Write your Date of Birth in dd-mm-yyyy format", Toast.LENGTH_SHORT).show();
             //stopping the function execution further
             return;
         }
@@ -113,7 +195,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
     }
 
-
+    /**
+     * Saves user's first name, last name, phone number, and address
+     */
     private void saveUserInformation() {
         //Creating string for saving user information
         String fname = editFirstName.getText().toString().trim();
@@ -135,6 +219,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         databaseReference.child(user.getUid()).setValue(userInformation);
     }
 
+    /**
+     * Clicking the button let user to register and sign in.
+     * @param v
+     */
     @Override
     public void onClick(View v) {
         if(v == btnReg){
