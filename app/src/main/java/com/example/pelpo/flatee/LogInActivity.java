@@ -22,9 +22,8 @@ public class LogInActivity extends AppCompatActivity implements TextView.OnClick
     private Button signIn;
     private EditText editEmail;
     private EditText editPass;
-    private EditText editEmailFunction;
-    private EditText editFirstName;
     private TextView signUp;
+    private TextView resetPw;
 
     private FirebaseAuth firebaseAuth;
 
@@ -50,11 +49,12 @@ public class LogInActivity extends AppCompatActivity implements TextView.OnClick
         signIn = (Button) findViewById(R.id.btnLogIn);
         editEmail = (EditText) findViewById(R.id.editTextEmail);
         editPass= (EditText) findViewById(R.id.editPassword);
-        //editFirstName = (EditText) findViewById(R.id.editFirstName);
         signUp = (TextView) findViewById(R.id.textViewSignUp);
+        resetPw = (TextView) findViewById(R.id.textViewResetPwd);
 
         signIn.setOnClickListener(this);
         signUp.setOnClickListener(this);
+        resetPw.setOnClickListener(this);
     }
 
     /**
@@ -122,8 +122,11 @@ public class LogInActivity extends AppCompatActivity implements TextView.OnClick
         if(v == signIn){
             userLogin();
         }
-        if(v == signUp){
+        if(v == signUp) {
             startActivity(new Intent(this, MainActivity.class));
         }
+            if(v == resetPw){
+                startActivity(new Intent(this, ResetPassword.class));
+            }
+        }
     }
-}

@@ -23,7 +23,8 @@
         <activity android:name=".CreateRoom" />
         <activity android:name=".ChatRoom" />
         <activity android:name=".Calendar" />
-        <activity android:name=".Profile"></activity>
+        <activity android:name=".Profile" />
+        <activity android:name=".ResetPassword"></activity>
     </application>
 
 </manifest>
