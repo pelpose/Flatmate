@@ -104,14 +104,16 @@ public class Dashboard extends AppCompatActivity implements View.OnClickListener
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
         if (id == R.id.action_logout){
             firebaseAuth.signOut();
             finish();
             startActivity(new Intent(this,LogInActivity.class));
+        }
+
+        if (id == R.id.action_changeProfile) {
+            startActivity(new Intent(this,Profile.class));
+            finish();
+            return true;
         }
 
         return super.onOptionsItemSelected(item);
