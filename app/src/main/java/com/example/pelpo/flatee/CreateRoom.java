@@ -38,5 +38,5 @@ public class CreateRoom extends AppCompatActivity {
         //ChatNum chatNum = new ChatNum(roomNum);
         FirebaseUser user = firebaseAuth.getCurrentUser();
         databaseReference.child(user.getUid()).child("roomNum").setValue(user.getUid().toString()+"test");
-    }
+}
 }

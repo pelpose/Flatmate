@@ -92,11 +92,17 @@ public class ChatRoom extends AppCompatActivity {
             startActivity(i);
         }
 
+        if (id == R.id.action_invite){
+            startActivity(new Intent(this,InviteActivity.class));
+        }
+
         if (id == R.id.action_leaveroom){
             FirebaseUser user = firebaseAuth.getCurrentUser();
             UserDB.child(user.getUid()).child("roomNum").setValue("12345");
             startActivity(new Intent(this,Dashboard.class));
         }
+
+
 
         return super.onOptionsItemSelected(item);
     }

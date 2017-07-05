@@ -33,49 +33,69 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.Executor;
 
+import static com.example.pelpo.flatee.R.id.textView;
+
 /**
  * Created by Reno on 25/06/2017.
  * Flat admin can send an invitation to a selected email in this activity
  */
 
-public class InviteActivity extends AppCompatActivity implements View.OnClickListener {
+public class InviteActivity extends AppCompatActivity implements TextView.OnClickListener {
 
+
+
+    private FirebaseAuth firebaseAuth;
+    private DatabaseReference databaseReference;
     private Button  btnInvite;
-    private Button    btnBack;
+    private Button  btnBack;
     private EditText etFlatee;
-
+    private TextView chatRoomNo;
     private String roomName;
 
-    private static final String EXTRA_MESSAGE = "Invite";
+    //private static final String EXTRA_MESSAGE = "Invite";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_invite);
 
+        chatRoomNo = (TextView) findViewById(textView);
         btnInvite= (Button) findViewById(R.id.btnInvite);
         btnBack= (Button) findViewById(R.id.btnBack);
         etFlatee=(EditText)findViewById(R.id.etFlatee);
+        chatRoomNo.setText(roomName);
 
-        //attaching listeners to buttons
         btnInvite.setOnClickListener(this);
-
-        // Get the Intent that started this activity and extract the string
-        Intent intent = getIntent();
-        //roomName = intent.getStringExtra(ChatRoom.EXTRA_MESSAGE);
-
-        // Capture the layout's TextView and set the string as its text
-        TextView textView = (TextView) findViewById(R.id.textView);
-        textView.setText(roomName);
+        btnBack.setOnClickListener(this);
     }
+
+
+
 
     private void sendInvite() {
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+    }
+
+
+    @Override
+    public void onClick(View v) {
+        if(v == btnInvite){
+            sendInvite();
+        }
+        if(v == btnBack){
+            finish();
+        }
+    }
+
+}
+
+/* FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
         if (user != null) {
-            //Inviter's Uid
-            //roomName = Uid + test
+            Inviter's Uid
+            roomName = Uid + test
             String inviterid = user.getUid();
 
 
@@ -85,7 +105,7 @@ public class InviteActivity extends AppCompatActivity implements View.OnClickLis
 
             Query lookForUser = ref.child("User").orderByChild("email").equalTo(invitedFlatee.toString());
 
-            /*
+
             lookForUser.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
@@ -107,36 +127,23 @@ public class InviteActivity extends AppCompatActivity implements View.OnClickLis
 
                 }
             });
-            */
 
-            //Gets user reference for the database
-            //DatabaseReference usersRef = ref.child("User");
 
-            //Searches and inputs datas into a directory, (directory/target, message)
-           //Map<String, Object> userUpdates = new HashMap<String, Object>();
-            //userUpdates.put("/roomNum", inviterid + "test");
+            Gets user reference for the database
+            DatabaseReference usersRef = ref.child("User");
 
-            //usersRef.updateChildren(userUpdates);
+            Searches and inputs datas into a directory, (directory/target, message)
+            Map<String, Object> userUpdates = new HashMap<String, Object>();
+            userUpdates.put("/roomNum", inviterid + "test");
 
-            //DatabaseReference dbr = FirebaseDatabase.getInstance().getReference(invitedFlatee.getText().toString());
+            usersRef.updateChildren(userUpdates);
 
-            //String isInvited = "YES";
-            //dbr.child().child("email").setValue(isInvited);
-            //Intent intent = new Intent(this, ChatRoom.class);
-            //String invitation = invitedFlatee.getText().toString();
-            //intent.putExtra(roomName, invitation);
-            //startActivity(intent);
-        }
-    }
+            DatabaseReference dbr = FirebaseDatabase.getInstance().getReference(invitedFlatee.getText().toString());
 
-    @Override
-    public void onClick(View v) {
-        if(v == btnInvite){
-            sendInvite();
-        }
-        if(v == btnBack){
-            finish();
-        }
-    }
-
-}
+            String isInvited = "YES";
+            dbr.child().child("email").setValue(isInvited);
+            Intent intent = new Intent(this, ChatRoom.class);
+            String invitation = invitedFlatee.getText().toString();
+            intent.putExtra(roomName, invitation);
+            startActivity(intent);
+        }*/

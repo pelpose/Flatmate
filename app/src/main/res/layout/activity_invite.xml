@@ -15,7 +15,7 @@
         tools:layout_editor_absoluteX="40dp">
 
 
-        <TextView
+        <!--<TextView
             android:layout_margin="15dp"
             android:id="@+id/textView"
             android:layout_width="match_parent"
@@ -25,12 +25,20 @@
         <ListView
             android:layout_width="300dp"
             android:layout_height="200dp"
-            android:id="@+id/lvFlatee"/>
+            android:id="@+id/lvFlatee"/>-->
+
+        <TextView
+            android:layout_margin="15dp"
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Chatroom No."/>
+
 
         <EditText
             android:layout_margin="15dp"
             android:inputType="textEmailAddress"
-            android:hint="Enter new flatee's email"
+            android:hint="Enter Flatee's Email"
             android:id ="@+id/etFlatee"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
