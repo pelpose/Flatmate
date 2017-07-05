@@ -51,6 +51,52 @@
                 android:layout_marginBottom="20dp"
                 android:drawableStart="@drawable/ic_pwd"/>
 
+            <!-- First name Label -->
+            <EditText android:id="@+id/editFirstName"
+                android:hint="Enter First name"
+                style="@style/editext_graybg"
+                android:layout_width="wrap_content"
+                android:layout_height="90dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="20dp"/>
+
+            <!-- Last name Label -->
+            <EditText android:id="@+id/editLastName"
+                android:hint="Enter Last name"
+                style="@style/editext_graybg"
+                android:layout_width="wrap_content"
+                android:layout_height="90dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="20dp"/>
+
+            <!-- Last name Label -->
+            <EditText android:id="@+id/editAddress"
+                android:hint="Enter Address"
+                style="@style/editext_graybg"
+                android:layout_width="wrap_content"
+                android:layout_height="90dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="20dp"/>
+
+            <!-- Phone number Label -->
+            <EditText android:id="@+id/editPhone"
+                android:hint="Enter phone number"
+                android:inputType="phone"
+                style="@style/editext_graybg"
+                android:layout_width="wrap_content"
+                android:layout_height="90dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="20dp"/>
+
+            <!-- Date of Birth Label -->
+            <EditText android:id="@+id/editDob"
+                android:hint="Enter Birthday"
+                style="@style/editext_graybg"
+                android:layout_width="wrap_content"
+                android:layout_height="90dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="20dp"/>
+
 
             <Button
                 android:id="@+id/btnRegi"

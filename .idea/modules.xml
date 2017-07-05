@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Flatmate.iml" filepath="$PROJECT_DIR$/Flatmate.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Flatmate.iml" filepath="$PROJECT_DIR$/Flatmate.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Flatmate_com.iml" filepath="$PROJECT_DIR$/Flatmate_com.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

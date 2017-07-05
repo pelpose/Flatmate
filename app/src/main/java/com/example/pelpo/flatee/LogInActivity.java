@@ -22,12 +22,18 @@ public class LogInActivity extends AppCompatActivity implements TextView.OnClick
     private Button signIn;
     private EditText editEmail;
     private EditText editPass;
+    private EditText editEmailFunction;
+    private EditText editFirstName;
     private TextView signUp;
 
     private FirebaseAuth firebaseAuth;
 
     private ProgressDialog progressDialog;
 
+    /**
+     * Creates signIn, editEmail, editPassword, signUp
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,30 +50,55 @@ public class LogInActivity extends AppCompatActivity implements TextView.OnClick
         signIn = (Button) findViewById(R.id.btnLogIn);
         editEmail = (EditText) findViewById(R.id.editTextEmail);
         editPass= (EditText) findViewById(R.id.editPassword);
+        //editFirstName = (EditText) findViewById(R.id.editFirstName);
         signUp = (TextView) findViewById(R.id.textViewSignUp);
 
         signIn.setOnClickListener(this);
         signUp.setOnClickListener(this);
     }
 
+    /**
+     * Let users to log in by providing their email and password
+     */
     private void userLogin() {
         String email= editEmail.getText().toString().trim();
         String password = editPass.getText().toString().trim();
-
-        if(TextUtils.isEmpty(email)){
+        String emailFunction = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"; // email function in abcd@ format.
+        if(TextUtils.isEmpty(email)) {
             //email is empty
-            Toast.makeText(this, "Please enter Email",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please enter your Email", Toast.LENGTH_SHORT).show();
+            //stopping the function execution further
+            return;
+        }
+        if(email.matches(emailFunction)){
+            //Written in email format
+            Toast.makeText(this, "Valid email address",Toast.LENGTH_SHORT).show();
+        } else {
+            //Written in wrong email format
+            Toast.makeText(this, "Type your email address correctly", Toast.LENGTH_SHORT).show();
+            //stopping the function execution further
+            return;
+        }
+        if(TextUtils.isEmpty(emailFunction)){
+            //Email is empty
+            Toast.makeText(this, "Invalid email", Toast.LENGTH_SHORT);
             //stopping the function execution further
             return;
         }
         if(TextUtils.isEmpty(password)){
             //password is empty
-            Toast.makeText(this, "Please enter Password",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please enter your Password",Toast.LENGTH_SHORT).show();
+            //stopping the function execution further
+            return;
+        } else if(password.length() <6 ) {
+            //password length should be longer than 5
+            Toast.makeText(this, "Your password is too short",Toast.LENGTH_SHORT).show();
             //stopping the function execution further
             return;
         }
+
         //if validations are ok
-        progressDialog.setMessage("Loging in...");
+        progressDialog.setMessage("Registering...");
         progressDialog.show();
 
         firebaseAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -82,6 +113,10 @@ public class LogInActivity extends AppCompatActivity implements TextView.OnClick
         });
     }
 
+    /**
+     * Clicking the button let users to sign in and sign up.
+     * @param v
+     */
     @Override
     public void onClick(View v) {
         if(v == signIn){
