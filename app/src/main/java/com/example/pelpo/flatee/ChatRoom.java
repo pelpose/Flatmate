@@ -14,6 +14,7 @@ import android.support.design.widget.FloatingActionButton;
 
 import com.firebase.ui.database.FirebaseListAdapter;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -91,10 +92,10 @@ public class ChatRoom extends AppCompatActivity {
             startActivity(i);
         }
 
-        if (id == R.id.action_logout){
-            firebaseAuth.signOut();
-            finish();
-            startActivity(new Intent(this,LogInActivity.class));
+        if (id == R.id.action_leaveroom){
+            FirebaseUser user = firebaseAuth.getCurrentUser();
+            UserDB.child(user.getUid()).child("roomNum").setValue("12345");
+            startActivity(new Intent(this,Dashboard.class));
         }
 
         return super.onOptionsItemSelected(item);

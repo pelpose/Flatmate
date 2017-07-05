@@ -62,7 +62,7 @@ public class InviteActivity extends AppCompatActivity implements View.OnClickLis
 
         // Get the Intent that started this activity and extract the string
         Intent intent = getIntent();
-        roomName = intent.getStringExtra(ChatRoom.EXTRA_MESSAGE);
+        //roomName = intent.getStringExtra(ChatRoom.EXTRA_MESSAGE);
 
         // Capture the layout's TextView and set the string as its text
         TextView textView = (TextView) findViewById(R.id.textView);
@@ -110,13 +110,13 @@ public class InviteActivity extends AppCompatActivity implements View.OnClickLis
             */
 
             //Gets user reference for the database
-            DatabaseReference usersRef = ref.child("User");
+            //DatabaseReference usersRef = ref.child("User");
 
             //Searches and inputs datas into a directory, (directory/target, message)
-            Map<String, Object> userUpdates = new HashMap<String, Object>();
-            userUpdates.put("/roomNum", inviterid + "test");
+           //Map<String, Object> userUpdates = new HashMap<String, Object>();
+            //userUpdates.put("/roomNum", inviterid + "test");
 
-            usersRef.updateChildren(userUpdates);
+            //usersRef.updateChildren(userUpdates);
 
             //DatabaseReference dbr = FirebaseDatabase.getInstance().getReference(invitedFlatee.getText().toString());
 

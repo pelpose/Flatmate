@@ -17,8 +17,8 @@
         android:title="Invite"
         app:showAsAction="never" />
     <item
-        android:id="@+id/action_logout"
+        android:id="@+id/action_leaveroom"
         android:orderInCategory="100"
-        android:title="Logout"
+        android:title="Leave room"
         app:showAsAction="never" />
 </menu>
