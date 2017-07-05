@@ -89,7 +89,7 @@
                 android:layout_marginBottom="20dp"/>
 
             <!-- Date of Birth Label -->
-            <EditText android:id="@+id/editDob"
+            <TextView android:id="@+id/editDob"
                 android:hint="Enter Birthday"
                 style="@style/editext_graybg"
                 android:layout_width="wrap_content"
