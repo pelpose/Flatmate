@@ -70,14 +70,9 @@ public class LogInActivity extends AppCompatActivity implements TextView.OnClick
             //stopping the function execution further
             return;
         }
-        if(email.matches(emailFunction)){
+        if(!email.matches(emailFunction)){
             //Written in email format
-            Toast.makeText(this, "Valid email address",Toast.LENGTH_SHORT).show();
-        } else {
-            //Written in wrong email format
-            Toast.makeText(this, "Type your email address correctly", Toast.LENGTH_SHORT).show();
-            //stopping the function execution further
-            return;
+            Toast.makeText(this, "Type your email address correctly",Toast.LENGTH_SHORT).show();
         }
         if(TextUtils.isEmpty(emailFunction)){
             //Email is empty
